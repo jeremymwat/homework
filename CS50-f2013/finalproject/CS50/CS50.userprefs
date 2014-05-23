@@ -1,0 +1,19 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\CS50 Assets\Scripts\GUI\NetworkGUI.cs">
+    <Files>
+      <File FileName="Assets\CS50 Assets\Networking\MasterNetworkGameController.cs" Line="18" Column="21" />
+      <File FileName="Assets\CS50 Assets\Scripts\Ball\BallGame.cs" Line="78" Column="40" />
+      <File FileName="Assets\CS50 Assets\Scripts\Ball\BallInfo.cs" Line="1" Column="1" />
+      <File FileName="Assets\CS50 Assets\Scripts\Game Management\DontGoThroughThings.cs" Line="1" Column="1" />
+      <File FileName="Assets\CS50 Assets\Scripts\Sound\jukeBox.cs" Line="20" Column="55" />
+      <File FileName="Assets\CS50 Assets\Networking\NetworkManager.cs" Line="75" Column="3" />
+      <File FileName="Assets\CS50 Assets\Scripts\GUI\NetworkGUI.cs" Line="40" Column="55" />
+      <File FileName="Assets\CS50 Assets\Scripts\GUI\GUIpong.cs" Line="20" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,44 @@
+/**
+* crack.c
+*
+* Jeremy Watson
+* jeremymwatson@gmail.com
+*
+* cracks the DES encrypted passwords from C's crypt() function
+*
+*/
+#define _XOPEN_SOURCE
+#include <unistd.h>
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <crypt.h>
+
+int main(void)
+{
+
+    string key = "crimson";
+    char* salt[] = "00";
+    salt[0] = '5';
+ //   salt[1] = '0';
+    string encrypted = crypt(key, salt);
+    printf("Key: %s\nSalt: %s\nEncryted Text:%s\n", key, salt, encrypted);
+    return 0;
+}
+
+//char* bruteForce(char* encryptedText)
+//{
+//    char* guess[9] = 
+
+
+// to iterate have check if currentnly moving char is = ascii 126,
+// if so increment current pos - 1 of chracter arra (aka string
+// recursion? if guess[i] = '126' then guess[i] = 32, guess[i-1] = guess[i-1] + 1;
+//}
+
+//char* dictAttack(char* encryptedText)
+//{
+ //give option to select file, or use linux's built in dict
+
+//}
+

@@ -1,0 +1,5 @@
+"Rule: ocaml: cmx* & o* -> native (%=ps0 )": "\192\005|\164\1440k\230-\012\n\190rg\012\002"
+"Rule: ocaml: ml & cmi -> cmx & o (%=ps0 )": "\186\196b3\168\229\159?]\171\201\021\177x\006\241"
+"Rule: ocaml dependencies ml (%=ps0 )": "\182\173g\001\015\134\147\r\183\165\253vP\014F\229"
+"Resource: /home/jeremy/code/SEAScs51repo/jeremywatsons-psets51/0/ps0.ml": "x\n\134\164S\167\241?\014c\218\162]\228\167#"
+"Rule: ocaml: ml -> cmo & cmi (%=ps0 )": "\016\149\163\234\175o\247Y57\177\179\207\156aR"

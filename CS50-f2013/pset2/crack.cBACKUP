@@ -1,0 +1,149 @@
+/**
+* crack.c
+*
+* Jeremy Watson
+* jeremymwatson@gmail.com
+*
+* cracks the DES encrypted passwords from C's crypt() function
+*
+*/
+#define _XOPEN_SOURCE
+#include <unistd.h>
+#include <cs50.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <crypt.h>
+#include <string.h>
+
+char* dictAttack (char* encryptedText, char salt[]);
+
+int main(int argc, char* argv[])
+{
+
+    if (argc != 2)
+    {   
+        printf("Please give exactly one argument (DES hash to crack) to the program");
+        return 1;
+    }
+    
+    char* encryptedText = argv[1];
+    char salt[3] = {encryptedText[0], encryptedText[1], '\0'};
+
+    char* plainText = dictAttack (encryptedText, salt);
+
+    printf("%s\n", plainText);
+    return 0;
+}
+
+
+// Function definitions
+
+char* bruteForce(char* encryptedText, char salt[])
+{
+
+    char guess[9] = {' ', '\0'};
+
+        
+
+    int i = 0;
+    int j = 0;
+    int k = 0;
+
+
+
+
+
+   
+    do
+    {
+        char* hashedPwd = crypt(guess, salt);
+        if (!strcmp(hashedPwd, encryptedText))
+        {
+            return guess;
+        }
+ 
+        if (guess[i] > '~')
+        {
+            j = i;
+     
+                      
+            while (j > 1 && guess[j - 1] >= '~' )
+            {
+                guess[j - 1] = ' ';
+                 j--;
+             }
+                
+            if (j > 0)
+            {
+                guess[j - 1]++;
+            }
+
+            guess[i] = ' ';
+
+        } 
+        else 
+        {
+
+            guess[i]++;
+
+        }
+            
+        if (guess[0] > '~')
+        {
+
+            i++;
+            guess[i] = ' ';
+            for (k = 0; k < i; k++)
+            {
+                guess[k] = ' ';
+            }
+            guess[i + 1] = '\0';
+            
+        }
+
+    } while (i <= 7);
+    return "Password not found.";
+}
+
+
+
+
+char* dictAttack (char* encryptedText, char salt[])
+{
+
+ //give option to select file, or use linux's built in dict
+    printf("Please give the name of the dict file (including extension if applicable)\n");
+    char* dictFile = GetString();
+    FILE* dict = fopen(dictFile, "r");
+
+    if (dict == NULL)
+    {
+        char* failed =  "File not found.\n";
+        return failed;
+    }
+
+    char output[256];
+
+    int outputLen;
+
+    // this is taken from the cs50 short "file i/o"
+    for (int i = 1; fgets(output, sizeof(output), dict) != NULL; i++)
+    {
+        char* readString = output;
+        // remove new line characters so it doesn't mess up the hash
+        outputLen = strlen(output);
+        readString[outputLen - 1] = '\0';
+        
+        char* hashedPwd = crypt(readString, salt);
+        if (!strcmp(hashedPwd, encryptedText))
+        {
+            return readString;
+        }
+
+    }
+
+    char* notFound = "Password not in dict or program error";
+    return notFound;
+
+}
+

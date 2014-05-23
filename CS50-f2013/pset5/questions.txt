@@ -1,0 +1,54 @@
+0.  GIF: 256
+    BMP: variable, up to 4,294,967,296 (2^32)
+    JPEG: 2^24 (16,777,216)
+    PNG: variable, up to 2^48 (48 bits per pixel)
+
+1.  GIF supports animation
+
+2.  Lossy compression will actually destroy some of the information, so you will never be able to recreate the original image. Because of this, it usually is also able to make files
+    smaller than lossless compression. Lossless does not destroy any information, so the file you view will be the same after compression. This also means it usually results in a 
+    larger file than lossy compression.
+    
+    
+3.  JPEG is lossy compressed.
+
+4.  It's directory entry is marked by changing the first character to indicate that the entry can be recycled, and the system moves all of the memory clusters associated with the
+    file to a list of free clusters. This just means the clusters can be used again and overwritten. At no point is the data actually destroyed (until it is reused and overwritten
+    by new data).
+    
+5.  The first step is to overwrite the hard drive with all 0's or 1's, or a randomly overwite with 0's or 1's. This should be done multiple times at minimum. On most modern drives this
+    is sufficient. If the drive contains very sensitive information, running the drive through a very strong magnet and then physically destroying the drive (shredding or fire) may
+    be necessary.
+
+6.  stdint.h is a header file used to declare integer types and macros. It is often used to make a program more portable, especially if that program does operations
+    that depend on the size of a type (in this case an integer) being the same in order to work. For example, if you need to make sure a signed long int is 32 bits
+    no matter what computer you run the program on you would want to use stdint.h.
+    
+7.  The definitions guarantee that the corresponding types will always have the specified size (uint8_t would be an unsigned int of 8 bits), so if you are doing operations
+    that depend on types having a certain size you can be sure they will always be that size.
+    
+8.  BYTE : 1 byte
+    DWORD : 4 bytes
+    WORD : 2 bytes
+    LONG : 4 bytes
+    
+9.  first two bytes in hex are 0x424d (BM in ASCII)
+
+10. bfSize is the size of the whole bitmap file, biSize is the size of the header information. Both are given in bytes.
+
+11. The sign of biHeight determines whether the bitmap starts at the bottom-left (positive biHeight) aka bottom-up or top-left (negative biHeight) aka top-down.
+
+12. biBitCount
+
+13. fopen could return NULL if the file does not exist
+
+14. The third argument of fread is the number of elements to be read. It is always 1 because the element being read is the whole header at once, and there is only 1 per file.
+
+15. 3
+
+16. fseek() sets where in the file you are working (the file position indicator). You give it a pointer to the file, an offset (an int that represnts bytes), and a place
+    in the file to the offset from (also an int representing bytes).
+    
+17. SEEK_CUR represents where in the file stream you are currently working.
+
+18. Milo Banana dun it

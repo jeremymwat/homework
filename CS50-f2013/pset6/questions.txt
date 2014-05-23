@@ -1,0 +1,33 @@
+0. A word invented for the sole purpoes of being the longest word in the English dictionary. It's actually just called "Silicosis"
+
+1. Returns resource usage information
+
+2. 16
+
+3. It's faster than passing by value
+
+4. First main declares and inits the various program checks, as well as does some error checking.
+    the main for-loop reads in characters one at a time, checking at each point for EOF, 
+    more than 45 chars (word too long), or if the word contains non-alphabetical characters. If
+    fgetc hits a newline char, and no other bad chars, the loop determines it has found a 
+    legitimate word. It then appends a null terminator and passes the word to 
+
+5. Reading in one char at a time makes it easier to find non-words, as well as gets around issues
+    where a read in string might be longer than the max length allowable.
+    
+6. It makes it harder for us to hack our way on to the big board
+
+7. I used a hashtable, where the table was a fixed sized array of node pointers. The nodes
+    were a simple linked list implementation, with data storage for a string and a pointer
+    to the next node.
+    
+8. about 4x slower than the staff implementation
+
+9. I thought doing a lot of alphabatizing was saving me time, but it turns out my hash function
+    worked well enought that a very naive implementation of a linked list (for both adding  
+    nodes and checking them) was faster. 
+    
+10. I know I could make unload constant time, but life got in the way and I wasn't able to. I
+    think my idea would have made load faster as well. I could not come up with a good way to
+    make check faster, which was frustrating.
+    

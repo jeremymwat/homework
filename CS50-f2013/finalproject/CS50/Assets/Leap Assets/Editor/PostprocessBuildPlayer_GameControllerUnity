@@ -1,0 +1,45 @@
+#!/bin/sh
+
+#
+# HUTCH UNITY BUILD POST PROCESS SHELL SCRIPT
+# AUTHOR: ST
+#
+
+# IOS XCODE POSTPROCESS
+if [ "$2" = "iPhone" ]; then
+	
+XCODEPATH=$1
+UNITYPATH=.
+
+##########################################
+# Add GameController.framework to the Xcode project. 
+##########################################
+
+# 1: REMOVE ALL REFERENCES TO FRAMEWORK FROM XCODE PROJECT.
+sed -i.bak '/GameController.framework/ c\
+' $XCODEPATH/Unity-iPhone.xcodeproj/project.pbxproj
+
+# 2: ADD FRAMEWORK TO PBXBuildFile SECTION OF XCODE PROJECT.
+sed -i.bak '/Begin PBXBuildFile section/ a\
+\	\	143C2CCB1811DADB00792402 /* GameController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 143C2CCA1811DADB00792402 /* GameController.framework */; };
+' $XCODEPATH/Unity-iPhone.xcodeproj/project.pbxproj
+
+# 3: ADD FRAMEWORK TO PBXFileReference SECTION OF XCODE PROJECT.
+sed -i.bak '/Begin PBXFileReference section/ a\
+\	\	143C2CCA1811DADB00792402 /* GameController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameController.framework; path = System/Library/Frameworks/GameController.framework; sourceTree = SDKROOT; };
+' $XCODEPATH/Unity-iPhone.xcodeproj/project.pbxproj
+
+# 4: ADD FRAMEWORK TO PBXFrameworksBuildPhase SECTION OF XCODE PROJECT.
+sed -i.bak '/Begin PBXFrameworksBuildPhase section/{N; N; N; N; /files/ a\
+\	\	\	\	143C2CCB1811DADB00792402 /* GameController.framework in Frameworks */,
+}' $XCODEPATH/Unity-iPhone.xcodeproj/project.pbxproj
+
+# 5: ADD FRAMEWORK TO PBXGroup Frameworks SECTION OF XCODE PROJECT.
+sed -i.bak '/* Frameworks */{N; N; /children/ a\
+\	\	\	\	143C2CCA1811DADB00792402 /* GameController.framework */,
+}' $XCODEPATH/Unity-iPhone.xcodeproj/project.pbxproj
+
+##########################################
+
+
+fi
