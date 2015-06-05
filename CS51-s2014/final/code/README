@@ -1,0 +1,16 @@
+Usage for our program is very simple. From the command line run ./Ras2Vec *filename here*. For example, "./Ras2Vec blueprint.jpg". It will output an SVG file in the same folder as the input file.
+
+If you wish to compile the binary yourself, you will need to be on the correct compiler version and have all of the libraries installed. Our group had some trouble installing the camlimages library in the VM, but below is a series of bash commands you can run that should set up your environment so it can compile our program. After installing the necessary libraries and programs, Simply run 'omake' in the code directory and it will compile itself.
+
+opam switch 4.01.0
+
+eval `opam config env`
+
+opam install async async_extra async_graphics async_kernel async_unix \
+    base-bigarray base-threads base-unix bin_prot camlimages camomile \
+     comparelib conf-gtksourceview config-file core core_bench core_extended \
+     core_kernel custom_printf enumerate fieldslib herelib lablgtk \
+      lablgtk-extras lambda-term lwt ocamlfind omake ounit pa_bench pa_ounit \
+      pa_test pipebang re2 react sexplib textutils type_conv typerep utop \
+       variantslib xmlm zed
+       

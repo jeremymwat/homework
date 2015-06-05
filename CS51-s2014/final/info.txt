@@ -1,0 +1,2 @@
+title: Raster to Vector Image Conversion
+seas-usernames: jpincus, khetarpal, dineshmalav, jeremywatson
