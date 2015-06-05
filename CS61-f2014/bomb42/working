@@ -1,0 +1,85 @@
+Dump of assembler code for function secret_phase:
+   0x08048b29 <+0>:	push   %ebp
+   0x08048b2a <+1>:	mov    %esp,%ebp
+   0x08048b2c <+3>:	push   %ebx
+=> 0x08048b2d <+4>:	int3   
+   0x08048b2e <+5>:	in     (%dx),%al
+   0x08048b2f <+6>:	adc    $0xe8,%al
+ call to read string (not showing up for some reason)
+   0x08048b31 <+8>:	and    (%esi),%eax
+   0x08048b33 <+10>:	add    %al,(%eax)
+   0x08048b35 <+12>:	movl   $0xa,0x8(%esp)
+   0x08048b3d <+20>:	movl   $0x0,0x4(%esp)
+   0x08048b45 <+28>:	mov    %eax,(%esp)
+   0x08048b48 <+31>:	call   0x804876c <strtol@plt>
+   0x08048b4d <+36>:	mov    %eax,%ebx
+   0x08048b4f <+38>:	lea    -0x1(%eax),%eax // lea as subraction, eax - 1
+   0x08048b52 <+41>:	cmp    $0x3e8,%eax
+   0x08048b57 <+46>:	jbe    0x8048b5e <secret_phase+53>
+   0x08048b59 <+48>:	call   0x8049048 <explode_bomb>
+   0x08048b5e <+53>:	mov    %ebx,0x4(%esp)
+   0x08048b62 <+57>:	movl   $0x804b690,(%esp)
+   0x08048b69 <+64>:	call   0x8048ad8 <fun7>
+   0x08048b6e <+69>:	cmp    $0x1,%eax
+   0x08048b71 <+72>:	je     0x8048b78 <secret_phase+79>
+   0x08048b73 <+74>:	call   0x8049048 <explode_bomb>
+   0x08048b78 <+79>:	movl   $0x8049f68,(%esp)
+   0x08048b7f <+86>:	call   0x804883c <puts@plt>
+   0x08048b84 <+91>:	call   0x8048fae <phase_defused>
+   0x08048b89 <+96>:	add    $0x14,%esp
+   0x08048b8c <+99>:	pop    %ebx
+   0x08048b8d <+100>:	pop    %ebp
+   0x08048b8e <+101>:	ret  
+
+fun7
+
+   0x08048ad8 <+0>:	push   %ebp		// ecx is carried value
+   0x08048ad9 <+1>:	mov    %esp,%ebp
+   0x08048adb <+3>:	push   %ebx
+   0x08048adc <+4>:	sub    $0x14,%esp
+   0x08048adf <+7>:	mov    0x8(%ebp),%edx
+   0x08048ae2 <+10>:	mov    0xc(%ebp),%ecx
+   0x08048ae5 <+13>:	mov    $0xffffffff,%eax //set eax to -1
+   0x08048aea <+18>:	test   %edx,%edx
+   0x08048aec <+20>:	je     0x8048b23 <fun7+75> // if edx null return (edx is current node add)
+=> 0x08048aee <+22>:	mov    (%edx),%ebx	// put value of current node in ebxsi
+
+   0x08048af0 <+24>:	cmp    %ecx,%ebx
+   0x08048af2 <+26>:	jle    0x8048b07 <fun7+47>   // if node <= cv, set return to 0
+   0x08048af4 <+28>:	mov    %ecx,0x4(%esp)
+   0x08048af8 <+32>:	mov    0x4(%edx),%eax
+   0x08048afb <+35>:	mov    %eax,(%esp)
+   0x08048afe <+38>:	call   0x8048ad8 <fun7>
+   0x08048b03 <+43>:	add    %eax,%eax
+   0x08048b05 <+45>:	jmp    0x8048b23 <fun7+75>
+   0x08048b07 <+47>:	mov    $0x0,%eax		// if current node =< cv, set eax to 0
+  
+   0x08048b0c <+52>:	cmp    %ecx,%ebx
+   0x08048b0e <+54>:	je     0x8048b23 <fun7+75>  // if cv equal to current node
+   0x08048b10 <+56>:	mov    %ecx,0x4(%esp)
+   0x08048b14 <+60>:	mov    0x8(%edx),%eax
+   0x08048b17 <+63>:	mov    %eax,(%esp)
+   0x08048b1a <+66>:	call   0x8048ad8 <fun7>
+   0x08048b1f <+71>:	lea    0x1(%eax,%eax,1),%eax  // eax * 2 + 1
+   0x08048b23 <+75>:	add    $0x14,%esp
+   0x08048b26 <+78>:	pop    %ebx
+   0x08048b27 <+79>:	pop    %ebp
+   0x08048b28 <+80>:	ret   
+
+n# int, ptr1, ptr2
+
+var 0x804b690 (n1) 0x24 (36)
+0x0804b678(n22) 0x0804b684(n21)
+
+
+var 0x0804b684 (n21) 0x8 (8)
+0x0804b654 (n31) 0x0804b66c (n32)
+
+var 0x0804b678 (n22) 0x32 (50)
+0x0804b660(n33) 0x0804b648 (n34)
+
+0x0804b654 n(31) 0x6
+0x0804b630(n41) 0x0804b60c(n42)
+
+
+
